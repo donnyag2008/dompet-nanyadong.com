@@ -1,0 +1,26 @@
+{
+  "updated": "23 November 2026",
+  "bi_rate": 6.00,
+  "bi_rate_prev": 5.75,
+  "bi_rate_date": "18 Nov 2026",
+  "kurs": 18245,
+  "kurs_awal_tahun": 16680,
+  "kurs_date": "17 Nov 2026",
+  "inflasi_yoy": 3.23,
+  "inflasi_makanan": 4.82,
+  "inflasi_bulan": "Okt 2026",
+  "bbm_date": "Nov 2026",
+  "bbm": {
+    "pertalite": 10000,
+    "pertamax": 15950,
+    "pertamax_setahun_lalu": 12200,
+    "biosolar": 6800,
+    "dexlite": 23700
+  },
+  "pajak_bunga": 0.20,
+  "sumber": [
+    { "nama": "Bank Indonesia – BI-Rate", "url": "https://www.bi.go.id" },
+    { "nama": "BPS – Inflasi", "url": "https://www.bps.go.id" },
+    { "nama": "Pertamina Patra Niaga – Harga BBM", "url": "https://pertaminapatraniaga.com" }
+  ]
+}
