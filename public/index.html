@@ -11,6 +11,14 @@
 <meta property="og:url" content="https://dompet.nanyadong.com/">
 <meta property="og:locale" content="id_ID">
 <link rel="canonical" href="https://dompet.nanyadong.com/">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#e4572e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dompet">
+<meta property="og:image" content="https://dompet.nanyadong.com/icons/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,6 +68,18 @@
   .cta h2{margin:0 0 6px;font-size:18px}
   .cta p{margin:0 0 12px;color:#7a2c14}
   .note{font-size:13px;color:var(--muted)}
+  .tips{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:10px}
+  .tips summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--good);list-style:none}
+  .tips summary::-webkit-details-marker{display:none}
+  .tips summary::after{content:" ▾"}
+  .tips[open] summary::after{content:" ▴"}
+  .tips ul{margin:8px 0 0;padding-left:18px;font-size:14px}
+  .tips li{margin:6px 0}
+  .tips li a{font-weight:700;white-space:nowrap}
+  .install{display:none;margin:0 0 20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .install.show{display:flex}
+  .install p{margin:0;font-size:14px;color:var(--muted)}
+  .install b{color:var(--ink)}
   footer{padding:24px 0 40px;font-size:13px;color:var(--muted)}
   footer ul{padding-left:18px;margin:6px 0}
   @media (max-width:560px){
@@ -87,6 +107,11 @@
     <p>Banyak yang bilang 2027 bakal susah. Daripada panik, cek angkanya sendiri: berapa rupiah tambahan yang kamu bayar tiap bulan karena inflasi, BI rate, BBM dan kurs. Pakai data resmi, tanpa ramalan.</p>
   </section>
 
+  <div class="install" id="install">
+    <p><b>Pasang sebagai aplikasi</b><br><span id="install-txt">Buka lebih cepat dari layar HP, tanpa download dari Play Store.</span></p>
+    <button class="btn btn-brand" id="install-btn">Pasang aplikasi</button>
+  </div>
+
   <section class="stats" aria-label="Data terbaru">
     <div class="stat"><div class="l">Inflasi tahunan</div><div class="v" id="s-inf">–</div><div class="d" id="s-inf-d"></div></div>
     <div class="stat"><div class="l">Inflasi makanan</div><div class="v" id="s-mkn">–</div><div class="d" id="s-mkn-d"></div></div>
@@ -101,6 +126,7 @@
     <div class="row"><label for="mk">Makanan dan minuman (Rp/bulan)</label><input id="mk" type="number" inputmode="numeric" value="3000000" step="100000" min="0"></div>
     <div class="row"><label for="ln">Kebutuhan lain (Rp/bulan)</label><input id="ln" type="number" inputmode="numeric" value="2000000" step="100000" min="0"></div>
     <div class="out" id="o1"></div>
+    <details class="tips" id="tp-belanja" hidden><summary>Tips hemat</summary><ul></ul></details>
   </section>
 
   <section class="card">
@@ -110,6 +136,7 @@
     <div class="row"><label for="lt">Liter per bulan</label><input id="lt" type="number" inputmode="numeric" value="40" step="5" min="0"></div>
     <div class="row"><label for="sk">Simulasi: kalau harga naik</label><div class="range"><input id="sk" type="range" min="0" max="50" step="5" value="10"><span id="sko">10%</span></div></div>
     <div class="out" id="o2"></div>
+    <details class="tips" id="tp-bbm" hidden><summary>Tips hemat</summary><ul></ul></details>
   </section>
 
   <section class="card">
@@ -120,6 +147,7 @@
     <div class="row"><label for="bg">Bunga sekarang (%/tahun)</label><input id="bg" type="number" inputmode="decimal" value="9" step="0.25" min="0"></div>
     <div class="row"><label for="nk">Kenaikan bunga dari bank (%)</label><input id="nk" type="number" inputmode="decimal" value="0.25" step="0.05" min="0"></div>
     <div class="out" id="o3"></div>
+    <details class="tips" id="tp-kpr" hidden><summary>Tips hemat</summary><ul></ul></details>
   </section>
 
   <section class="card">
@@ -128,6 +156,7 @@
     <div class="row"><label for="tb">Saldo tabungan/deposito (Rp)</label><input id="tb" type="number" inputmode="numeric" value="50000000" step="1000000" min="0"></div>
     <div class="row"><label for="bd">Bunga per tahun (%)</label><input id="bd" type="number" inputmode="decimal" value="4.5" step="0.25" min="0"></div>
     <div class="out" id="o4"></div>
+    <details class="tips" id="tp-tabungan" hidden><summary>Tips hemat</summary><ul></ul></details>
   </section>
 
   <section class="card">
@@ -135,6 +164,7 @@
     <p class="sub">Gadget, obat impor, suku cadang, biaya kuliah luar negeri, dan sejenisnya.</p>
     <div class="row"><label for="im">Belanja per bulan (Rp)</label><input id="im" type="number" inputmode="numeric" value="0" step="100000" min="0"></div>
     <div class="out" id="o5"></div>
+    <details class="tips" id="tp-impor" hidden><summary>Tips hemat</summary><ul></ul></details>
   </section>
 
   <div class="total" role="status" aria-live="polite">
@@ -228,6 +258,7 @@ function calc() {
       ? `Daya beli tabunganmu <span class="pos">bertambah sekitar ${rp(rv)} per tahun</span>.`
       : `Daya beli tabunganmu <span class="neg">berkurang sekitar ${rp(-rv)} per tahun</span>, meskipun saldonya terlihat naik.`);
 
+  if (rv < 0) $("tp-tabungan").open = true;
   const im = val("im"), kn = D.kurs / D.kurs_awal_tahun - 1, d5 = im * kn;
   $("o5").innerHTML = im > 0
     ? `Rupiah melemah sekitar ${Math.round(kn * 100)}% sejak awal tahun. Kalau harga ikut kurs penuh, naik hingga <span class="neg">${rp(d5)}/bulan</span>.`
@@ -239,10 +270,51 @@ function calc() {
   $("wa").href = "https://wa.me/?text=" + encodeURIComponent(msg);
 }
 
+function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function fillTips() {
+  const T = D.tips || {};
+  Object.keys(T).forEach(k => {
+    const box = document.getElementById("tp-" + k);
+    if (!box || !Array.isArray(T[k]) || !T[k].length) return;
+    box.querySelector("ul").innerHTML = T[k].map(t => {
+      const a = t.link && /^https:\/\//.test(t.link) ? ` <a href="${esc(t.link)}" target="_blank" rel="noopener">${esc(t.label || "Buka")} →</a>` : "";
+      return `<li>${esc(t.teks)}${a}</li>`;
+    }).join("");
+    box.hidden = false;
+  });
+}
+
 function init() {
-  fillStatic(); calc();
+  fillStatic(); fillTips(); calc();
   document.querySelectorAll("input,select").forEach(e => e.addEventListener("input", calc));
 }
+
+// Installable app (PWA)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+}
+(function () {
+  const box = $("install"), btn = $("install-btn");
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  let prompt = null;
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault(); prompt = e; box.classList.add("show");
+  });
+  btn.addEventListener("click", async () => {
+    if (!prompt) return;
+    prompt.prompt();
+    await prompt.userChoice;
+    prompt = null; box.classList.remove("show");
+  });
+  window.addEventListener("appinstalled", () => box.classList.remove("show"));
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (ios) {
+    $("install-txt").innerHTML = "Di iPhone: ketuk tombol <b>Bagikan</b> di Safari, lalu pilih <b>Tambahkan ke Layar Utama</b>.";
+    btn.style.display = "none";
+    box.classList.add("show");
+  }
+})();
 
 fetch("/data.json", { cache: "no-cache" })
   .then(r => r.ok ? r.json() : Promise.reject())

@@ -1,6 +1,6 @@
 {
   "updated": "23 November 2026",
-  "bi_rate": 6.00,
+  "bi_rate": 6.0,
   "bi_rate_prev": 5.75,
   "bi_rate_date": "18 Nov 2026",
   "kurs": 18245,
@@ -17,10 +17,114 @@
     "biosolar": 6800,
     "dexlite": 23700
   },
-  "pajak_bunga": 0.20,
+  "pajak_bunga": 0.2,
   "sumber": [
-    { "nama": "Bank Indonesia – BI-Rate", "url": "https://www.bi.go.id" },
-    { "nama": "BPS – Inflasi", "url": "https://www.bps.go.id" },
-    { "nama": "Pertamina Patra Niaga – Harga BBM", "url": "https://pertaminapatraniaga.com" }
-  ]
+    {
+      "nama": "Bank Indonesia – BI-Rate",
+      "url": "https://www.bi.go.id"
+    },
+    {
+      "nama": "BPS – Inflasi",
+      "url": "https://www.bps.go.id"
+    },
+    {
+      "nama": "Pertamina Patra Niaga – Harga BBM",
+      "url": "https://pertaminapatraniaga.com"
+    }
+  ],
+  "tips": {
+    "belanja": [
+      {
+        "teks": "Cek harga pangan di daerahmu sebelum belanja lewat Panel Harga Badan Pangan Nasional, supaya tahu kalau ada yang menjual terlalu mahal.",
+        "link": "https://panelharga.badanpangan.go.id",
+        "label": "Buka panel harga"
+      },
+      {
+        "teks": "Cari info Gerakan Pangan Murah atau operasi pasar dari pemda dan Bulog. Harga beras, minyak dan telur di sana biasanya di bawah harga pasar."
+      },
+      {
+        "teks": "Beli beras SPHP Bulog kalau tersedia di pasar atau toko dekatmu. Harganya diatur pemerintah."
+      },
+      {
+        "teks": "Cabai sedang jadi penyumbang inflasi terbesar. Beli saat harganya turun, lalu simpan di freezer atau olah jadi sambal untuk stok."
+      },
+      {
+        "teks": "Rencanakan menu seminggu dan belanja sekali jalan. Lebih sedikit jajan dadakan dan ongkir."
+      },
+      {
+        "teks": "Mau tahu pasar atau toko grosir termurah di dekatmu?",
+        "link": "https://nanyadong.com",
+        "label": "Tanya NanyaDong"
+      }
+    ],
+    "bbm": [
+      {
+        "teks": "Jaga tekanan ban sesuai anjuran pabrik. Ban kurang angin membuat mesin bekerja lebih berat dan BBM lebih boros."
+      },
+      {
+        "teks": "Servis rutin, ganti oli dan filter udara tepat waktu."
+      },
+      {
+        "teks": "Untuk rute harian, bandingkan dengan transportasi umum seperti KRL, MRT, TransJakarta, Trans Padang atau angkot. Sering kali jauh lebih murah dari bensin dan parkir."
+      },
+      {
+        "teks": "Gabungkan beberapa urusan dalam satu perjalanan dan hindari jam macet. Mesin menyala di kemacetan tetap membakar BBM."
+      },
+      {
+        "teks": "Pakai Pertalite atau Biosolar? Pastikan kendaraanmu sudah terdaftar di MyPertamina jika di daerahmu diwajibkan.",
+        "link": "https://mypertamina.id",
+        "label": "Cek MyPertamina"
+      }
+    ],
+    "kpr": [
+      {
+        "teks": "Tanyakan ke bank kapan bunga floating-mu disesuaikan dan berapa besarnya, supaya tidak kaget saat cicilan naik."
+      },
+      {
+        "teks": "Kalau bungamu jauh di atas penawaran bank lain, pertimbangkan take over atau refinancing. Hitung dulu biaya provisi, appraisal, notaris dan penalti pelunasan."
+      },
+      {
+        "teks": "Punya dana lebih? Pelunasan sebagian bisa memperkecil cicilan atau mempersingkat tenor. Cek dulu ketentuan penaltinya di bank."
+      },
+      {
+        "teks": "Jangan menutup cicilan dengan pinjol. Bunga dan dendanya jauh lebih berat. Kalau mulai kesulitan, ajukan restrukturisasi ke bank sejak awal."
+      }
+    ],
+    "tabungan": [
+      {
+        "teks": "Siapkan dana darurat 3 sampai 6 kali pengeluaran bulanan sebelum mulai berinvestasi."
+      },
+      {
+        "teks": "Bandingkan bunga deposito antar bank. Simpananmu hanya dijamin LPS jika bunganya tidak melebihi tingkat bunga penjaminan LPS.",
+        "link": "https://lps.go.id",
+        "label": "Cek bunga LPS"
+      },
+      {
+        "teks": "SBN ritel seperti ORI, SBR, Sukuk Ritel dan Sukuk Tabungan dijamin negara, dan imbal hasilnya sering lebih tinggi dari deposito. Bisa dibeli mulai Rp1 juta lewat bank atau aplikasi resmi.",
+        "link": "https://www.djppr.kemenkeu.go.id",
+        "label": "Info SBN ritel"
+      },
+      {
+        "teks": "Waspada investasi yang menjanjikan untung tinggi dan pasti. Cek dulu legalitasnya di OJK, atau telepon Kontak OJK 157.",
+        "link": "https://ojk.go.id",
+        "label": "Cek di OJK"
+      },
+      {
+        "teks": "Mau tahu di mana beli emas Antam atau cara pakai Pegadaian?",
+        "link": "https://nanyadong.com",
+        "label": "Tanya NanyaDong"
+      }
+    ],
+    "impor": [
+      {
+        "teks": "Tunda pembelian gadget atau barang impor yang tidak mendesak, terutama saat rupiah sedang tertekan."
+      },
+      {
+        "teks": "Pilih produk lokal dengan kualitas setara. Harganya tidak langsung ikut naik saat dolar menguat."
+      },
+      {
+        "teks": "Tanyakan ke dokter atau apoteker apakah ada obat generik. Zat aktifnya sama, harganya biasanya jauh lebih murah."
+      }
+    ]
+  }
 }
