@@ -1,0 +1,10 @@
+{
+  "name": "dompet-nanyadong",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public"
+  },
+  "routes": [
+    { "pattern": "dompet.nanyadong.com", "custom_domain": true }
+  ]
+}
