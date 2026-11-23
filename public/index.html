@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dampak ke Dompet – Cek pengaruh rupiah, BI rate, inflasi dan BBM ke keuanganmu | NanyaDong</title>
+<meta name="description" content="Kalkulator sederhana: lihat berapa rupiah tambahan yang kamu bayar tiap bulan karena inflasi, kenaikan BI rate, harga BBM dan pelemahan rupiah. Data resmi BI, BPS dan Pertamina.">
+<meta property="og:title" content="Dampak ke Dompet – berapa pengaruhnya ke kamu?">
+<meta property="og:description" content="Masukkan belanja, BBM, KPR dan tabunganmu. Lihat dampaknya dalam rupiah per bulan. Tanpa ramalan, pakai data resmi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dompet.nanyadong.com/">
+<meta property="og:locale" content="id_ID">
+<link rel="canonical" href="https://dompet.nanyadong.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1d1d1b; --muted:#6b6a65; --line:#e6e3da;
+    --brand:#e4572e; --brand-soft:#fdece6; --good:#1d8a5a; --good-soft:#e5f4ec; --warn:#b4560b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--brand)}
+  header{background:var(--card);border-bottom:1px solid var(--line)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{font-weight:700;font-size:18px;text-decoration:none;color:var(--ink)}
+  .logo span{color:var(--brand)}
+  .top a.back{font-size:14px;text-decoration:none}
+  .hero{padding:36px 0 20px}
+  .hero h1{font-size:32px;line-height:1.2;margin:0 0 10px}
+  .hero p{color:var(--muted);margin:0;font-size:17px;max-width:640px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .stat .l{font-size:12px;color:var(--muted)}
+  .stat .v{font-size:20px;font-weight:700}
+  .stat .d{font-size:11px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:0 0 16px}
+  .card h2{font-size:18px;margin:0 0 4px}
+  .card .sub{font-size:14px;color:var(--muted);margin:0 0 12px}
+  .row{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:12px;align-items:center;margin:8px 0}
+  .row label{font-size:15px;color:var(--muted)}
+  input[type=number],input[type=text],select{width:100%;height:42px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  input:focus,select:focus{outline:2px solid var(--brand);outline-offset:0;border-color:transparent}
+  .range{display:flex;gap:10px;align-items:center}
+  .range input{flex:1;accent-color:var(--brand)}
+  .range span{font-weight:700;min-width:44px;text-align:right}
+  .out{margin:14px 0 0;padding:12px 14px;background:var(--bg);border-radius:10px;font-size:15px}
+  .out b{color:var(--ink)}
+  .neg{color:var(--brand);font-weight:700}
+  .pos{color:var(--good);font-weight:700}
+  .total{position:sticky;bottom:0;background:var(--ink);color:#fff;border-radius:16px;padding:16px 22px;margin:20px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+  .total .l{font-size:14px;opacity:.8}
+  .total .v{font-size:26px;font-weight:700}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+  .btn-wa{background:#25d366;color:#fff}
+  .btn-brand{background:var(--brand);color:#fff}
+  .cta{background:var(--brand-soft);border:1px solid #f6c9b8;border-radius:16px;padding:20px 22px;margin:0 0 16px}
+  .cta h2{margin:0 0 6px;font-size:18px}
+  .cta p{margin:0 0 12px;color:#7a2c14}
+  .note{font-size:13px;color:var(--muted)}
+  footer{padding:24px 0 40px;font-size:13px;color:var(--muted)}
+  footer ul{padding-left:18px;margin:6px 0}
+  @media (max-width:560px){
+    .hero h1{font-size:26px}
+    .row{grid-template-columns:1fr}
+    .row label{font-size:14px}
+    .total{padding:10px 14px;border-radius:12px;flex-wrap:nowrap}
+    .total .l{font-size:12px}
+    .total .v{font-size:19px}
+    .total .btn{padding:8px 12px;font-size:12px;white-space:nowrap}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="logo" href="https://nanyadong.com">Nanya<span>Dong</span> · Dompet</a>
+    <a class="back" href="https://nanyadong.com">Ke NanyaDong →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Dampak ke Dompet</h1>
+    <p>Banyak yang bilang 2027 bakal susah. Daripada panik, cek angkanya sendiri: berapa rupiah tambahan yang kamu bayar tiap bulan karena inflasi, BI rate, BBM dan kurs. Pakai data resmi, tanpa ramalan.</p>
+  </section>
+
+  <section class="stats" aria-label="Data terbaru">
+    <div class="stat"><div class="l">Inflasi tahunan</div><div class="v" id="s-inf">–</div><div class="d" id="s-inf-d"></div></div>
+    <div class="stat"><div class="l">Inflasi makanan</div><div class="v" id="s-mkn">–</div><div class="d" id="s-mkn-d"></div></div>
+    <div class="stat"><div class="l">BI rate</div><div class="v" id="s-bi">–</div><div class="d" id="s-bi-d"></div></div>
+    <div class="stat"><div class="l">Kurs USD</div><div class="v" id="s-kurs">–</div><div class="d" id="s-kurs-d"></div></div>
+    <div class="stat"><div class="l">Pertalite / liter</div><div class="v" id="s-ptl">–</div><div class="d" id="s-ptl-d"></div></div>
+  </section>
+
+  <section class="card">
+    <h2>1. Belanja bulanan</h2>
+    <p class="sub">Berapa lebih mahal dibanding setahun lalu untuk belanja yang sama?</p>
+    <div class="row"><label for="mk">Makanan dan minuman (Rp/bulan)</label><input id="mk" type="number" inputmode="numeric" value="3000000" step="100000" min="0"></div>
+    <div class="row"><label for="ln">Kebutuhan lain (Rp/bulan)</label><input id="ln" type="number" inputmode="numeric" value="2000000" step="100000" min="0"></div>
+    <div class="out" id="o1"></div>
+  </section>
+
+  <section class="card">
+    <h2>2. BBM</h2>
+    <p class="sub">Biaya bensin/solar sekarang, plus simulasi kalau harganya naik.</p>
+    <div class="row"><label for="jb">Jenis BBM</label><select id="jb"></select></div>
+    <div class="row"><label for="lt">Liter per bulan</label><input id="lt" type="number" inputmode="numeric" value="40" step="5" min="0"></div>
+    <div class="row"><label for="sk">Simulasi: kalau harga naik</label><div class="range"><input id="sk" type="range" min="0" max="50" step="5" value="10"><span id="sko">10%</span></div></div>
+    <div class="out" id="o2"></div>
+  </section>
+
+  <section class="card">
+    <h2>3. KPR / kredit bunga floating</h2>
+    <p class="sub">Kalau bank ikut menaikkan bunga setelah BI rate naik. Kosongkan sisa pinjaman jika tidak punya kredit.</p>
+    <div class="row"><label for="pk">Sisa pinjaman (Rp)</label><input id="pk" type="number" inputmode="numeric" value="500000000" step="1000000" min="0"></div>
+    <div class="row"><label for="tn">Sisa tenor (tahun)</label><input id="tn" type="number" inputmode="numeric" value="15" min="1" max="30" step="1"></div>
+    <div class="row"><label for="bg">Bunga sekarang (%/tahun)</label><input id="bg" type="number" inputmode="decimal" value="9" step="0.25" min="0"></div>
+    <div class="row"><label for="nk">Kenaikan bunga dari bank (%)</label><input id="nk" type="number" inputmode="decimal" value="0.25" step="0.05" min="0"></div>
+    <div class="out" id="o3"></div>
+  </section>
+
+  <section class="card">
+    <h2>4. Tabungan dan inflasi</h2>
+    <p class="sub">Apakah bunga tabunganmu masih menang melawan inflasi?</p>
+    <div class="row"><label for="tb">Saldo tabungan/deposito (Rp)</label><input id="tb" type="number" inputmode="numeric" value="50000000" step="1000000" min="0"></div>
+    <div class="row"><label for="bd">Bunga per tahun (%)</label><input id="bd" type="number" inputmode="decimal" value="4.5" step="0.25" min="0"></div>
+    <div class="out" id="o4"></div>
+  </section>
+
+  <section class="card">
+    <h2>5. Barang impor / terkait dolar</h2>
+    <p class="sub">Gadget, obat impor, suku cadang, biaya kuliah luar negeri, dan sejenisnya.</p>
+    <div class="row"><label for="im">Belanja per bulan (Rp)</label><input id="im" type="number" inputmode="numeric" value="0" step="100000" min="0"></div>
+    <div class="out" id="o5"></div>
+  </section>
+
+  <div class="total" role="status" aria-live="polite">
+    <div>
+      <div class="l">Perkiraan tambahan beban per bulan</div>
+      <div class="v" id="tot">–</div>
+    </div>
+    <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Bagikan ke WhatsApp</a>
+  </div>
+
+  <section class="cta">
+    <h2>Mau cari cara hemat di dekatmu?</h2>
+    <p>Pasar murah, tempat beli emas Antam, cara pakai Pegadaian, bengkel yang jujur, kos yang lebih murah. Tanya saja ke NanyaDong, teman lokal yang tau segalanya.</p>
+    <a class="btn btn-brand" href="https://nanyadong.com">Tanya NanyaDong</a>
+  </section>
+
+  <p class="note">Ini bukan ramalan dan bukan saran keuangan. Angka inflasi adalah rata-rata nasional BPS, harga di daerahmu bisa berbeda. Bank tidak selalu menaikkan bunga sebesar kenaikan BI rate. Simulasi BBM hanya skenario "bagaimana jika". Dampak kurs adalah batas atas karena harga biasanya naik lebih sedikit. Bunga tabungan dihitung setelah pajak 20%.</p>
+</main>
+
+<footer class="wrap">
+  <div>Data diperbarui: <span id="upd">–</span>. Sumber:</div>
+  <ul id="src"></ul>
+  <div>Bagian dari <a href="https://nanyadong.com">NanyaDong</a>.</div>
+</footer>
+
+<script>
+const FALLBACK = {
+  updated: "23 November 2026", bi_rate: 6.00, bi_rate_prev: 5.75, bi_rate_date: "18 Nov 2026",
+  kurs: 18245, kurs_awal_tahun: 16680, kurs_date: "17 Nov 2026",
+  inflasi_yoy: 3.23, inflasi_makanan: 4.82, inflasi_bulan: "Okt 2026", bbm_date: "Nov 2026",
+  bbm: { pertalite: 10000, pertamax: 15950, pertamax_setahun_lalu: 12200, biosolar: 6800, dexlite: 23700 },
+  pajak_bunga: 0.20,
+  sumber: [
+    { nama: "Bank Indonesia – BI-Rate", url: "https://www.bi.go.id" },
+    { nama: "BPS – Inflasi", url: "https://www.bps.go.id" },
+    { nama: "Pertamina Patra Niaga – Harga BBM", url: "https://pertaminapatraniaga.com" }
+  ]
+};
+let D = FALLBACK;
+
+const rp = n => (n < 0 ? "-" : "") + "Rp" + Math.round(Math.abs(n)).toLocaleString("id-ID");
+const pct = (n, d = 2) => n.toFixed(d).replace(".", ",") + "%";
+const val = id => Math.max(0, parseFloat(document.getElementById(id).value) || 0);
+const $ = id => document.getElementById(id);
+const pay = (P, r, y) => { const i = r / 1200, n = y * 12; return i === 0 ? P / n : P * i / (1 - Math.pow(1 + i, -n)); };
+let lastTotal = 0;
+
+function fillStatic() {
+  $("s-inf").textContent = pct(D.inflasi_yoy); $("s-inf-d").textContent = "BPS, " + D.inflasi_bulan;
+  $("s-mkn").textContent = pct(D.inflasi_makanan); $("s-mkn-d").textContent = "BPS, " + D.inflasi_bulan;
+  $("s-bi").textContent = pct(D.bi_rate); $("s-bi-d").textContent = "naik dari " + pct(D.bi_rate_prev) + ", " + D.bi_rate_date;
+  $("s-kurs").textContent = rp(D.kurs); $("s-kurs-d").textContent = "BI, " + D.kurs_date;
+  $("s-ptl").textContent = rp(D.bbm.pertalite); $("s-ptl-d").textContent = "Pertamina, " + D.bbm_date;
+  $("upd").textContent = D.updated;
+  const b = D.bbm;
+  $("jb").innerHTML = [
+    ["pertalite", "Pertalite"], ["pertamax", "Pertamax"], ["biosolar", "Biosolar"], ["dexlite", "Dexlite"]
+  ].map(([k, n]) => `<option value="${k}">${n} – ${rp(b[k])}/liter</option>`).join("");
+  $("src").innerHTML = D.sumber.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener">${s.nama}</a></li>`).join("");
+}
+
+function calc() {
+  const fm = 1 + D.inflasi_makanan / 100, fl = 1 + D.inflasi_yoy / 100;
+  const mk = val("mk"), ln = val("ln");
+  const lalu = mk / fm + ln / fl, d1 = mk + ln - lalu;
+  $("o1").innerHTML = `Belanja yang sama setahun lalu sekitar <b>${rp(lalu)}</b>. Sekarang kamu bayar <span class="neg">${rp(d1)} lebih banyak per bulan</span>.`;
+
+  const jenis = $("jb").value, harga = D.bbm[jenis], lt = val("lt"), sk = val("sk");
+  $("sko").textContent = sk + "%";
+  const biaya = harga * lt, d2 = biaya * sk / 100;
+  let extra = "";
+  if (jenis === "pertamax" && D.bbm.pertamax_setahun_lalu) {
+    const naik = (D.bbm.pertamax / D.bbm.pertamax_setahun_lalu - 1) * 100;
+    extra = ` Pertamax sudah naik sekitar ${Math.round(naik)}% dari ${rp(D.bbm.pertamax_setahun_lalu)} setahun lalu.`;
+  }
+  $("o2").innerHTML = `Biaya BBM sekarang <b>${rp(biaya)}/bulan</b>. Kalau harga naik ${sk}%, tambah <span class="neg">${rp(d2)}/bulan</span>.${extra}`;
+
+  const P = val("pk"), y = Math.max(1, val("tn")), r = val("bg"), k = val("nk");
+  let d3 = 0;
+  if (P > 0) {
+    const a = pay(P, r, y), b2 = pay(P, r + k, y); d3 = b2 - a;
+    $("o3").innerHTML = `Cicilan naik sekitar <span class="neg">${rp(d3)}/bulan</span> (dari ${rp(a)} ke ${rp(b2)}).`;
+  } else {
+    $("o3").innerHTML = "Tidak ada kredit, tidak ada tambahan cicilan.";
+  }
+
+  const tb = val("tb"), bd = val("bd");
+  const net = bd * (1 - D.pajak_bunga), riil = net - D.inflasi_yoy, rv = tb * riil / 100;
+  $("o4").innerHTML = `Bunga bersih ${pct(net)} dikurangi inflasi ${pct(D.inflasi_yoy)} = <b>${pct(riil)} per tahun</b>. ` +
+    (rv >= 0
+      ? `Daya beli tabunganmu <span class="pos">bertambah sekitar ${rp(rv)} per tahun</span>.`
+      : `Daya beli tabunganmu <span class="neg">berkurang sekitar ${rp(-rv)} per tahun</span>, meskipun saldonya terlihat naik.`);
+
+  const im = val("im"), kn = D.kurs / D.kurs_awal_tahun - 1, d5 = im * kn;
+  $("o5").innerHTML = im > 0
+    ? `Rupiah melemah sekitar ${Math.round(kn * 100)}% sejak awal tahun. Kalau harga ikut kurs penuh, naik hingga <span class="neg">${rp(d5)}/bulan</span>.`
+    : `Rupiah melemah sekitar ${Math.round(kn * 100)}% sejak awal tahun (dari ${rp(D.kurs_awal_tahun)} ke ${rp(D.kurs)} per USD).`;
+
+  lastTotal = d1 + d2 + d3 + d5;
+  $("tot").textContent = rp(lastTotal) + "/bulan";
+  const msg = `Aku baru cek "Dampak ke Dompet": karena inflasi, BBM dan bunga, pengeluaranku naik sekitar ${rp(lastTotal)} per bulan. Coba cek punyamu: https://dompet.nanyadong.com`;
+  $("wa").href = "https://wa.me/?text=" + encodeURIComponent(msg);
+}
+
+function init() {
+  fillStatic(); calc();
+  document.querySelectorAll("input,select").forEach(e => e.addEventListener("input", calc));
+}
+
+fetch("/data.json", { cache: "no-cache" })
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(j => { D = Object.assign({}, FALLBACK, j, { bbm: Object.assign({}, FALLBACK.bbm, j.bbm || {}) }); })
+  .catch(() => {})
+  .finally(init);
+</script>
+</body>
+</html>
