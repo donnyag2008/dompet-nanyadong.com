@@ -230,7 +230,13 @@ function calc() {
   const fm = 1 + D.inflasi_makanan / 100, fl = 1 + D.inflasi_yoy / 100;
   const mk = val("mk"), ln = val("ln");
   const lalu = mk / fm + ln / fl, d1 = mk + ln - lalu;
-  $("o1").innerHTML = `Belanja yang sama setahun lalu sekitar <b>${rp(lalu)}</b>. Sekarang kamu bayar <span class="neg">${rp(d1)} lebih banyak per bulan</span>.`;
+  const r1k = n => rp(Math.round(n / 1000) * 1000);
+  const dm = mk - mk / fm, dl = ln - ln / fl;
+  $("o1").innerHTML = (mk + ln) > 0
+    ? `Belanjamu sekarang <b>${rp(mk + ln)}</b> per bulan. Untuk barang yang sama, setahun lalu kamu cukup bayar sekitar <b>${r1k(lalu)}</b>.<br>` +
+      `Artinya kamu bayar <span class="neg">sekitar ${r1k(d1)} lebih banyak per bulan</span> ` +
+      `(makanan +${r1k(dm)} karena naik ${pct(D.inflasi_makanan)}, lainnya +${r1k(dl)} karena naik ${pct(D.inflasi_yoy)}).`
+    : "Isi belanja bulananmu untuk melihat dampaknya.";
 
   const jenis = $("jb").value, harga = D.bbm[jenis], lt = val("lt"), sk = val("sk");
   $("sko").textContent = sk + "%";
