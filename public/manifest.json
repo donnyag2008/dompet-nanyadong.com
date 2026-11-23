@@ -1,0 +1,16 @@
+{
+  "name": "Dampak ke Dompet – NanyaDong",
+  "short_name": "Dompet",
+  "description": "Cek pengaruh inflasi, BI rate, BBM dan kurs rupiah ke keuanganmu, dalam rupiah per bulan.",
+  "lang": "id",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f5f0",
+  "theme_color": "#e4572e",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
